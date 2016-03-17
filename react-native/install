@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Check for OS X system
+if [ "$(uname)" != "Darwin" ]; then
+	echo 'Unfortunately, this script only runs on OS X'
+	exit
+fi
+
+# 1. Install Homebrew
+echo -e '\x1b[1m1. Install Homebrew \x1b[m'
+if [ "$(which brew)" != "" ]; then
+	echo 'Updating Homebrew...'
+	brew update && brew upgrade
+else
+	echo 'Installing Homebrew...'
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	echo 'Homebrew has been installed'
+fi
+
+# 2. Install Node.js
+echo -e '\x1b[1m2. Install Node.js \x1b[m'
+if [ "$(which node)" != "" ]; then
+	echo 'Node.js was installed!'
+else
+	echo 'Installing Node.js...'
+	brew install node
+	echo 'Node.js has been installed'
+fi
+
+# 3. Install Watchman
+echo -e '\x1b[1m3. Install Watchman \x1b[m'
+if [ "$(which watchman)" != "" ]; then
+	echo 'Watchman was installed!'
+else
+	echo 'Installing Watchman...'
+	brew install watchman
+	echo 'Watchman has been installed'
+fi
+
+# 4. Install Flow
+echo -e '\x1b[1m4. Install Flow \x1b[m'
+if [ "$(which flow)" != "" ]; then
+	echo 'Flow was installed!'
+else
+	echo 'Installing Flow...'
+	brew install flow
+	echo 'Flow has been installed'
+fi
+
+# 5. Install React Native
+echo -e '\x1b[1m5. Install React Native \x1b[m'
+if [ "$(which react-native)" != "" ]; then
+	echo 'React Native was installed!'
+else
+	echo 'Installing React Native...'
+	npm install -g react-native-cli
+	echo 'React Native has been installed'
+fi
+
+echo -e '\x1b[1mDone!\x1b[m'
+
+echo 'Now you can run:'
+echo '$ react-native init AwesomeProject'
+echo 'to create your react native project!'
