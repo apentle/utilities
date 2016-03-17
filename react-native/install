@@ -53,7 +53,7 @@ if [ "$(which react-native)" != "" ]; then
 	echo 'React Native was installed!'
 else
 	echo 'Installing React Native...'
-	npm install -g react-native-cli
+	sudo npm install -g react-native-cli
 	echo 'React Native has been installed'
 fi
 
