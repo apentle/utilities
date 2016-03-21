@@ -51,14 +51,17 @@ fi
 echo -e '\x1b[1m5. Install React Native \x1b[m'
 if [ "$(which react-native)" != "" ]; then
 	echo 'React Native was installed!'
-else
+elif [ "$(which npm)" != "" ]; then
 	echo 'Installing React Native...'
 	sudo npm install -g react-native-cli
 	echo 'React Native has been installed'
+else
+	echo 'Error while installing React Native'
 fi
 
-echo -e '\x1b[1mDone!\x1b[m'
-
-echo 'Now you can run:'
-echo '$ react-native init AwesomeProject'
-echo 'to create your react native project!'
+if [ "$(which react-native)" != "" ]; then
+	echo -e '\x1b[1mDone!\x1b[m'
+	echo 'Now you can run:'
+	echo '$ react-native init AwesomeProject'
+	echo 'to create your react native project!'
+fi
